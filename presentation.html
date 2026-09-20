@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>برزنتيشن DS CORE - أنظمة حقيقية وشاشات الأنظمة من الداخل</title>
+  <title>طريق الكفاح - من سنة أولى كلية إلى 6 مشاريع في السوق الفعلي</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-dark: #070d19;
-      --card-bg: rgba(14, 25, 46, 0.88);
-      --border-color: rgba(56, 189, 248, 0.3);
+      --card-bg: rgba(13, 23, 44, 0.94);
+      --border-color: rgba(56, 189, 248, 0.35);
       --cyan-neon: #38bdf8;
       --cyan-glow: #00f0ff;
       --gold-primary: #f59e0b;
@@ -19,6 +19,8 @@
       --text-main: #f8fafc;
       --text-sub: #94a3b8;
       --green-live: #10b981;
+      --road-asphalt: #131b2e;
+      --road-line: #facc15;
     }
 
     * {
@@ -30,10 +32,10 @@
     body {
       background-color: var(--bg-dark);
       background-image: 
-        radial-gradient(circle at 50% 20%, #102852 0%, #060b17 75%),
+        radial-gradient(circle at 50% 12%, #0d234a 0%, #070d19 75%),
         linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
         linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
-      background-size: 100% 100%, 40px 40px, 40px 40px;
+      background-size: 100% 100%, 32px 32px, 32px 32px;
       font-family: 'Cairo', 'Outfit', sans-serif;
       color: var(--text-main);
       overflow: hidden;
@@ -44,89 +46,174 @@
       user-select: none;
     }
 
-    /* Top Nav */
-    .top-nav {
-      height: 55px;
-      padding: 0 30px;
+    /* Top Road Track (رسمة الشارع الحقيقي والمحطات باللوجوهات) */
+    .road-street-track {
+      background: #091224;
+      border-bottom: 2px solid rgba(56, 189, 248, 0.3);
+      padding: 8px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      backdrop-filter: blur(14px);
+      z-index: 100;
+      position: relative;
+    }
+
+    .road-info-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(10, 18, 33, 0.85);
-      border-bottom: 1px solid rgba(56, 189, 248, 0.2);
-      backdrop-filter: blur(10px);
-      z-index: 100;
     }
 
-    .brand-group {
+    .road-title-banner {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #f8fafc;
     }
-    .brand-logo {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      border: 2px solid var(--cyan-neon);
-      object-fit: cover;
-    }
-    .brand-text {
-      font-family: 'Outfit', sans-serif;
-      font-size: 20px;
-      font-weight: 900;
-      letter-spacing: 1.5px;
-      color: #fff;
-    }
-    .brand-text span {
-      color: var(--cyan-neon);
+    .road-title-banner span {
+      color: var(--gold-glow);
     }
 
-    .nav-controls {
+    .nav-actions {
       display: flex;
-      align-items: center;
-      gap: 12px;
+      gap: 8px;
     }
-    .nav-btn {
-      background: rgba(56, 189, 248, 0.1);
-      border: 1px solid rgba(56, 189, 248, 0.3);
+    .btn-nav {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
       color: #fff;
-      padding: 5px 14px;
+      padding: 4px 12px;
       border-radius: 6px;
       cursor: pointer;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
+      text-decoration: none;
       transition: all 0.2s ease;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      text-decoration: none;
     }
-    .nav-btn:hover {
-      background: rgba(56, 189, 248, 0.25);
+    .btn-nav:hover {
+      background: rgba(56, 189, 248, 0.3);
       color: var(--cyan-glow);
     }
 
-    /* Presentation Container */
+    /* Street Asphalt with Road Markings */
+    .street-road-container {
+      position: relative;
+      background: var(--road-asphalt);
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      border-radius: 50px;
+      height: 64px;
+      padding: 0 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.8), 0 4px 15px rgba(0,0,0,0.5);
+      overflow: hidden;
+    }
+
+    /* Moving Center Dashed Line of the Street */
+    .street-center-line {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      height: 3px;
+      background: repeating-linear-gradient(90deg, var(--road-line) 0, var(--road-line) 20px, transparent 20px, transparent 40px);
+      transform: translateY(-50%);
+      z-index: 1;
+      opacity: 0.85;
+      animation: roadScroll 2s linear infinite;
+    }
+    @keyframes roadScroll {
+      0% { background-position: 0 0; }
+      100% { background-position: 40px 0; }
+    }
+
+    .road-progress-fill {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, rgba(245, 158, 11, 0.25), rgba(56, 189, 248, 0.35));
+      border-left: 2px solid var(--cyan-neon);
+      z-index: 2;
+      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Stations along the Street */
+    .station-node {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .station-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #0a1426;
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      transition: all 0.3s ease;
+    }
+    .station-badge img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .station-badge.text-node {
+      font-size: 14px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900;
+      color: var(--cyan-neon);
+    }
+
+    .station-node.active .station-badge {
+      border-color: var(--gold-glow);
+      transform: scale(1.22);
+      box-shadow: 0 0 16px var(--gold-glow), 0 0 25px rgba(245, 158, 11, 0.6);
+      background: #0f244a;
+    }
+    .station-node.passed .station-badge {
+      border-color: var(--cyan-neon);
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+    }
+
+    /* Slides Container */
     .presentation-container {
       flex: 1;
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 15px 35px 25px;
+      padding: 15px 35px;
     }
 
     .slide {
       position: absolute;
-      inset: 15px 35px 25px;
+      inset: 15px 35px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       opacity: 0;
       pointer-events: none;
-      transform: scale(0.95) translateY(25px);
-      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-      max-width: 1350px;
+      transform: scale(0.96) translateY(18px);
+      transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      max-width: 1360px;
       margin: 0 auto;
     }
 
@@ -143,36 +230,36 @@
       background: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 24px;
-      padding: 30px 45px;
+      padding: 28px 40px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       backdrop-filter: blur(20px);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(56, 189, 248, 0.05);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), inset 0 0 30px rgba(56, 189, 248, 0.05);
       position: relative;
       overflow: hidden;
     }
 
-    .slide-badge {
+    .station-road-sign {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 5px 16px;
+      gap: 10px;
+      padding: 6px 18px;
       background: rgba(245, 158, 11, 0.15);
       border: 1px solid var(--gold-primary);
       border-radius: 50px;
       font-size: 13px;
       font-weight: 800;
       color: var(--gold-glow);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       align-self: flex-start;
     }
 
     .slide-title {
-      font-size: clamp(28px, 3.5vw, 44px);
+      font-size: clamp(26px, 3.4vw, 40px);
       font-weight: 900;
       line-height: 1.25;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       color: #fff;
     }
     .slide-title span {
@@ -184,146 +271,126 @@
     .slide-subtitle {
       font-size: 16px;
       color: var(--cyan-neon);
-      margin-bottom: 20px;
-      font-weight: 600;
+      margin-bottom: 18px;
+      font-weight: 700;
     }
 
-    /* 2 Columns Layout */
-    .project-slide-content {
+    /* 2 Columns Layout for Stations (مكان + لوجو + كلام المكان) */
+    .station-content-grid {
       display: grid;
-      grid-template-columns: 1fr 1.15fr;
-      gap: 35px;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
       align-items: center;
       width: 100%;
       height: 100%;
     }
 
-    .project-text-side {
+    .station-text-side {
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
-    .project-media-side {
+    .station-visual-side {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      height: 100%;
-      justify-content: center;
-    }
-
-    /* Inside System Interactive Mockup */
-    .inside-system-box {
-      background: #060e1d;
-      border: 2px solid rgba(56, 189, 248, 0.35);
-      border-radius: 16px;
-      padding: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    }
-
-    .inside-top {
-      display: flex;
-      justify-content: space-between;
+      gap: 14px;
       align-items: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      padding-bottom: 8px;
-      margin-bottom: 12px;
-      font-size: 12px;
-      color: var(--cyan-neon);
-      font-weight: 700;
+      justify-content: center;
     }
 
-    .dots-group {
+    /* Logo Showcase Box */
+    .logo-hero-box {
+      width: 130px;
+      height: 130px;
+      border-radius: 24px;
+      background: #091224;
+      border: 2px solid var(--cyan-neon);
       display: flex;
-      gap: 6px;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.3);
+      padding: 10px;
     }
-    .dot-i {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
+    .logo-hero-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
-    .dot-i.r { background: #ef4444; }
-    .dot-i.y { background: #f59e0b; }
-    .dot-i.g { background: #10b981; }
 
-    /* Dashboard Metrics Strip */
-    .slide-metrics-row {
+    /* Real Place / Storefront Photo (Only for Zarda & Ibrahim) */
+    .real-place-card {
+      width: 100%;
+      max-width: 440px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid rgba(56, 189, 248, 0.4);
+      position: relative;
+      background: #070d19;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+    }
+    .real-place-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+    .real-place-card-tag {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0, 0, 0, 0.88);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 11.5px;
+      font-weight: 800;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Metric Counters for Project */
+    .station-metrics-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
-      margin-top: 12px;
+      margin-top: 14px;
+      width: 100%;
     }
-    .m-card {
+    .metric-card {
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 10px;
       padding: 10px;
       text-align: center;
     }
-    .m-card-val {
+    .metric-card-val {
       font-family: 'Outfit', sans-serif;
       font-size: 19px;
       font-weight: 900;
       color: var(--gold-bright);
     }
-    .m-card-lbl {
+    .metric-card-lbl {
       font-size: 11px;
       color: var(--text-sub);
+      margin-top: 2px;
     }
 
-    .media-logos-row {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .mini-logo-box {
-      width: 65px;
-      height: 65px;
-      border-radius: 12px;
-      background: #0f1c33;
-      border: 1px solid rgba(56, 189, 248, 0.4);
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .mini-logo-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .proof-stat-pill {
-      flex: 1;
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid #10b981;
-      border-radius: 10px;
-      padding: 8px 14px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #a7f3d0;
-      font-size: 12.5px;
-      font-weight: 700;
-    }
-
-    .project-description {
+    .station-desc-txt {
       font-size: 15px;
       color: #cbd5e1;
       line-height: 1.7;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
-    .feature-list {
+    .station-specs-list {
       list-style: none;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 18px;
+      gap: 10px;
+      margin-bottom: 16px;
     }
-    .feature-item {
+    .spec-item {
       background: rgba(56, 189, 248, 0.08);
       border: 1px solid rgba(56, 189, 248, 0.2);
       padding: 8px 12px;
@@ -332,13 +399,13 @@
       color: #e2e8f0;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
     }
 
     .tech-pill {
       background: rgba(245, 158, 11, 0.12);
       border: 1px solid rgba(245, 158, 11, 0.3);
-      padding: 3px 10px;
+      padding: 4px 12px;
       border-radius: 6px;
       font-size: 12px;
       color: var(--gold-glow);
@@ -346,8 +413,8 @@
       font-family: 'Outfit', sans-serif;
     }
 
-    /* Cover Slide */
-    .cover-content {
+    /* Cover & Final Slide Styling */
+    .road-cover-box {
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -355,237 +422,229 @@
       justify-content: center;
       height: 100%;
     }
-    .cover-logo-circle {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      border: 3px solid var(--cyan-neon);
-      box-shadow: 0 0 40px rgba(56, 189, 248, 0.4);
-      margin-bottom: 20px;
-      overflow: hidden;
+
+    .road-big-icon {
+      font-size: 46px;
+      margin-bottom: 14px;
+      animation: pulseGlow 2s infinite alternate;
     }
-    .cover-logo-circle img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    @keyframes pulseGlow {
+      from { transform: scale(1); filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.5)); }
+      to { transform: scale(1.12); filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.8)); }
     }
 
-    /* Bottom Bar */
+    /* Bottom Nav Bar */
     .bottom-bar {
-      height: 60px;
-      background: rgba(10, 18, 33, 0.88);
-      border-top: 1px solid rgba(56, 189, 248, 0.2);
+      height: 52px;
+      background: rgba(9, 17, 34, 0.94);
+      border-top: 1px solid rgba(56, 189, 248, 0.25);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 35px;
+      padding: 0 30px;
       z-index: 100;
     }
-    .slide-indicator {
+    .slide-counter {
       font-family: 'Outfit', sans-serif;
-      font-size: 14px;
+      font-size: 13.5px;
       color: var(--cyan-neon);
       font-weight: 700;
-    }
-    .progress-track {
-      flex: 1;
-      max-width: 350px;
-      height: 5px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      margin: 0 25px;
-      overflow: hidden;
-    }
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--cyan-neon), var(--gold-glow));
-      width: 10%;
-      transition: width 0.3s ease;
     }
     .ctrl-btn {
       background: linear-gradient(135deg, #2563eb, #1d4ed8);
       color: #fff;
       border: none;
-      padding: 8px 18px;
+      padding: 7px 18px;
       border-radius: 6px;
       cursor: pointer;
       font-weight: 800;
       font-size: 13px;
       transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
     .ctrl-btn.gold {
       background: linear-gradient(135deg, #f59e0b, #d97706);
-      color: #000;
+      color: #050b14;
+    }
+    .ctrl-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Nav -->
-  <nav class="top-nav">
-    <div class="brand-group">
-      <img src="ds_core_logo.jpg" alt="DS CORE" class="brand-logo">
-      <div class="brand-text">DS <span>CORE</span></div>
-      <span style="color: var(--text-sub); font-size: 13px; margin-right: 10px;">| 6 مشاريع حقيقية وشاشات الأنظمة من الداخل</span>
+  <!-- Top Road Highway & Stations (رسمة الشارع الحقيقي والمحطات باللوجوهات) -->
+  <header class="road-street-track">
+    <div class="road-info-row">
+      <div class="road-title-banner">
+        🛣️ <span>طريق الكفاح والبداية:</span> طالب في سنة أولى حوّل شغفه إلى 6 مشاريع حقيقية وشغالة في السوق
+      </div>
+      <div class="nav-actions">
+        <a href="ds_core_poster.html" class="btn-nav">📄 البوستر الرسمي</a>
+        <a href="index.html" class="btn-nav">🌐 الموقع التفاعلي</a>
+        <button class="btn-nav" onclick="toggleFullScreen()">⛶ شاشة كاملة</button>
+      </div>
     </div>
 
-    <div class="nav-controls">
-      <a href="ds_core_poster.html" class="nav-btn">📄 عرض البوستر</a>
-      <a href="index.html" class="nav-btn">🌐 الموقع التفاعلي</a>
-      <button class="nav-btn" onclick="toggleFullScreen()">⛶ شاشة كاملة</button>
+    <!-- Street Asphalt with Road Markings & Milestone Logos -->
+    <div class="street-road-container">
+      <div class="street-center-line"></div>
+      <div class="road-progress-fill" id="roadProgressFill" style="width: 0%;"></div>
+
+      <!-- 10 Milestone Stations along the Road -->
+      <div class="station-node active" onclick="goToSlide(1)" title="نقطة الانطلاق">
+        <div class="station-badge text-node">🚀</div>
+      </div>
+      <div class="station-node" onclick="goToSlide(2)" title="النزول للشارع">
+        <div class="station-badge text-node">🚶‍♂️</div>
+      </div>
+      <div class="station-node" onclick="goToSlide(3)" title="زردة كافيه">
+        <div class="station-badge" style="background:#fff;"><img src="zarda_logo.png" alt="زردة كافيه"></div>
+      </div>
+      <div class="station-node" onclick="goToSlide(4)" title="قصة فلافل">
+        <div class="station-badge" style="background:#fff;"><img src="falafel_story_logo.jpeg" alt="قصة فلافل"></div>
+      </div>
+      <div class="station-node" onclick="goToSlide(5)" title="إبراهيم هنيدي">
+        <div class="station-badge"><img src="ibrahim_logo.jpeg" alt="إبراهيم هنيدي"></div>
+      </div>
+      <div class="station-node" onclick="goToSlide(6)" title="Con's Manaa">
+        <div class="station-badge" style="background:#fff;"><img src="cons_manaa_logo.png" alt="Con's Manaa"></div>
+      </div>
+      <div class="station-node" onclick="goToSlide(7)" title="PlayStation Lounge">
+        <div class="station-badge"><img src="playstation_logo.jpg" alt="PlayStation"></div>
+      </div>
+      <div class="station-node" onclick="goToSlide(8)" title="السايبر والكافيه">
+        <div class="station-badge"><img src="cyber_cafe_logo.jpg" alt="السايبر والكافيه"></div>
+      </div>
+      <div class="station-node" onclick="goToSlide(9)" title="خلاصة التجربة">
+        <div class="station-badge text-node">💎</div>
+      </div>
+      <div class="station-node" onclick="goToSlide(10)" title="ولادة DS CORE">
+        <div class="station-badge"><img src="ds_core_logo.jpg" alt="DS CORE"></div>
+      </div>
     </div>
-  </nav>
+  </header>
 
   <!-- Presentation Slides -->
   <main class="presentation-container">
 
-    <!-- Slide 1: Cover -->
+    <!-- Slide 1: The Road Begins -->
     <section class="slide active" data-index="1">
       <div class="slide-box">
-        <div class="cover-content">
-          <div class="cover-logo-circle">
-            <img src="ds_core_logo.jpg" alt="DS CORE Logo">
-          </div>
-          <div class="slide-badge">🚀 رحلة من سنة أولى كلية إلى قلب السوق الفعلي</div>
+        <div class="road-cover-box">
+          <div class="road-big-icon">🛣️</div>
+          <div class="station-road-sign">📍 بداية الطريق • من مقاعد الفرقة الأولى بالكلية</div>
           <h1 class="slide-title">
-            شركة <span style="color: var(--cyan-neon);">DS CORE</span> للحلول البرمجية
+            طريق بدأ بخطوة.. طالب في <span style="color: var(--gold-glow);">سنة أولى</span> حوّل شغفه إلى <span style="color: var(--cyan-neon);">6 مشاريع حقيقية</span> وشغالة في السوق دلوقتي!
           </h1>
-          <div class="slide-subtitle">
-            قصة كفاح طالب حوّل شغفه بالبرمجة في السنة الأولى إلى 6 أنظمة تجارية حقيقية تعمل في السوق اليوم!
+          <div class="slide-subtitle" style="font-size: 18px; max-width: 860px; margin-bottom: 20px;">
+            دي مش قصة استعراض ولا شركة كبيرة جاية تتباهى.. دي قصة سعي وكفاح حقيقي بنحكيها عشان نقول لكل طالب داخل الكلية جديد: "في أمل حقيقي.. ومفيش حاجة اسمها استنى لما اتخرج عشان أبدأ!"
           </div>
 
-          <div style="background: rgba(245, 158, 11, 0.12); border: 1px solid var(--gold-primary); border-radius: 14px; padding: 16px 24px; max-width: 850px; font-size: 15.5px; color: #fef3c7; line-height: 1.7; margin-bottom: 20px;">
-            💬 <strong>رسالة إلهام لكل طالب جديد:</strong><br>
-            "لا تنتظر حتى تتخرج لتبدأ! بأنظمتنا الستة أثبتنا أن سطر الكود الذي تكتبه اليوم يمكن أن يدير كافيهات ومطاعم ومحلات تجارية على أرض الواقع!"
+          <div style="background: rgba(245, 158, 11, 0.12); border: 1px solid var(--gold-primary); border-radius: 14px; padding: 16px 28px; max-width: 840px; font-size: 15px; color: #fef3c7; line-height: 1.7; margin-bottom: 22px;">
+            💡 <strong>خارطة الطريق:</strong><br>
+            سنأخذكم في رحلة عبر 6 محطات واقعية في شوارعنا: كيف تحولت مشاكل كافيهات ومطاعم ومحلات حقيقية إلى برمجيات وأنظمة كاشير ومخازن تدير عملهم اليومي بكفاءة وموثوقية تامة.
           </div>
 
-          <div style="display: flex; gap: 35px; margin-top: 10px;">
-            <div style="text-align: center;">
-              <div style="font-family: Outfit, sans-serif; font-size: 32px; font-weight: 900; color: var(--gold-glow);">6</div>
-              <div style="font-size: 12.5px; color: var(--text-sub);">أنظمة تجارية فعلية بالسوق</div>
-            </div>
-            <div style="text-align: center;">
-              <div style="font-family: Outfit, sans-serif; font-size: 32px; font-weight: 900; color: var(--cyan-glow);">10,000+</div>
-              <div style="font-size: 12.5px; color: var(--text-sub);">معاملة تُدار يومياً</div>
-            </div>
-            <div style="text-align: center;">
-              <div style="font-family: Outfit, sans-serif; font-size: 32px; font-weight: 900; color: #34d399;">Year 1</div>
-              <div style="font-size: 12.5px; color: var(--text-sub);">البداية أثناء الفرقة الأولى</div>
-            </div>
-          </div>
+          <button class="ctrl-btn gold" style="padding: 11px 32px; font-size: 15.5px;" onclick="nextSlide()">
+            ابدأ السير على الطريق ❯
+          </button>
         </div>
       </div>
     </section>
 
-    <!-- Slide 2: The Spark -->
+    <!-- Slide 2: The Real Turn -->
     <section class="slide" data-index="2">
       <div class="slide-box">
-        <div class="slide-badge">⚡ الفكرة والشرارة الأولى</div>
-        <h2 class="slide-title">كيف بدأت <span>الحكاية</span>؟</h2>
-        <div class="slide-subtitle">كسرنا القاعدة: البرمجة مش مجرد مناهج وامتحانات.. البرمجة حل لمشاكل الناس</div>
+        <div class="station-road-sign">⚡ المحطة الأولى • النزول للشارع وكسر القاعدة</div>
+        <h2 class="slide-title">كيف بدأت <span>الرحلة</span> في سنة أولى؟</h2>
+        <div class="slide-subtitle">القرار اللي غيّر المعادلة: الكود مش مجرد تمارين امتحانات.. الكود أداة لحل مشاكل حقيقية</div>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
-          <div style="background: rgba(56, 189, 248, 0.06); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 14px; padding: 20px;">
-            <div style="font-size: 26px; margin-bottom: 8px;">💻</div>
-            <h4 style="font-size: 18px; color: #fff; margin-bottom: 6px;">البداية من الصفر</h4>
-            <p style="font-size: 14px; color: #cbd5e1; line-height: 1.6;">بدأنا سنة أولى بحلم كبير: أن نصنع برامج حقيقية يلمسها الناس، فقررنا قضاء الصيف في تعلم لغات البرمجة وتطوير الأنظمة ليل نهار.</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 15px;">
+          <div style="background: rgba(56, 189, 248, 0.06); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 14px; padding: 18px;">
+            <div style="font-size: 24px; margin-bottom: 6px;">🎓</div>
+            <h4 style="font-size: 17px; color: #fff; margin-bottom: 6px;">التحدي من أول ترم</h4>
+            <p style="font-size: 13.5px; color: #cbd5e1; line-height: 1.6;">دخلنا الكلية والكل كان بيقول: "التعليم نظري، والشغل مش هتشوفه غير بعد التخرج". رفضنا الاستسلام للفكرة وقررنا أن الصيف هو فرصة إثبات الذات وتحويل الأكواد إلى برامج تعمل فعلياً.</p>
           </div>
-          <div style="background: rgba(56, 189, 248, 0.06); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 14px; padding: 20px;">
-            <div style="font-size: 26px; margin-bottom: 8px;">🏬</div>
-            <h4 style="font-size: 18px; color: #fff; margin-bottom: 6px;">النزول لأصحاب الأعمال</h4>
-            <p style="font-size: 14px; color: #cbd5e1; line-height: 1.6;">تحدثنا مع مديري الكافيهات ومحلات التجزئة، وفهمنا مشاكلهم في الجرد وسرقة الوقت وحسابات الورديات، وبنينا لكل عميل نظامه المخصص من النواة.</p>
+          <div style="background: rgba(56, 189, 248, 0.06); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 14px; padding: 18px;">
+            <div style="font-size: 24px; margin-bottom: 6px;">🚶‍♂️</div>
+            <h4 style="font-size: 17px; color: #fff; margin-bottom: 6px;">النزول لأصحاب المحلات</h4>
+            <p style="font-size: 13.5px; color: #cbd5e1; line-height: 1.6;">نزلنا للكافيهات ومحلات الملابس وصالات الألعاب في منطقتنا.. سألناهم: "إيه اللي بيعطلكم في الشغل؟ إيه المشاكل اللي بتضيع وقتكم وفلوسكم؟" وبدأنا نبني الحلول على مقاسهم بالضبط.</p>
           </div>
-          <div style="background: rgba(56, 189, 248, 0.06); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 14px; padding: 20px;">
-            <div style="font-size: 26px; margin-bottom: 8px;">⚙️</div>
-            <h4 style="font-size: 18px; color: #fff; margin-bottom: 6px;">احتراف التقنيات</h4>
-            <p style="font-size: 14px; color: #cbd5e1; line-height: 1.6;">بنينا تطبيقات فائقة السرعة بـ C# و Flutter Windows Desktop مع قواعد بيانات SQLite محلية مؤمنة بنسخ احتياطي دوري.</p>
+          <div style="background: rgba(56, 189, 248, 0.06); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 14px; padding: 18px;">
+            <div style="font-size: 24px; margin-bottom: 6px;">💻</div>
+            <h4 style="font-size: 17px; color: #fff; margin-bottom: 6px;">ليالي البرمجة والتطوير</h4>
+            <p style="font-size: 13.5px; color: #cbd5e1; line-height: 1.6;">ساعات طويلة من كتابة الكود بـ C# و Flutter Windows وقواعد بيانات SQLite، وتصميم شاشات سريعة وسهلة الاستخدام لكل صاحب مشروع.</p>
           </div>
-          <div style="background: rgba(56, 189, 248, 0.06); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 14px; padding: 20px;">
-            <div style="font-size: 26px; margin-bottom: 8px;">🎯</div>
-            <h4 style="font-size: 18px; color: #fff; margin-bottom: 6px;">التشغيل الفعلي والنجاح</h4>
-            <p style="font-size: 14px; color: #cbd5e1; line-height: 1.6;">تم تشغيل الأنظمة الستة بالكامل في السوق الفعلي، وأثبتت موثوقيتها بنسبة 99.9% في إدارة مبيعات العملاء يومياً.</p>
+          <div style="background: rgba(56, 189, 248, 0.06); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 14px; padding: 18px;">
+            <div style="font-size: 24px; margin-bottom: 6px;">🚀</div>
+            <h4 style="font-size: 17px; color: #fff; margin-bottom: 6px;">النتيجة: 6 أنظمة حية</h4>
+            <p style="font-size: 13.5px; color: #cbd5e1; line-height: 1.6;">بفضل الله وتوفيقه، تم تركيب وتشغيل الأنظمة الستة، واليوم تدير آلاف المعاملات اليومية بموثوقية كاملة وبدون أي توقف.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Slide 3: Project 1 - Zarda Cafe -->
+    <!-- Slide 3: Station 1 - Zarda Cafe (Place Photo + Logo + Story) -->
     <section class="slide" data-index="3">
       <div class="slide-box">
-        <div class="project-slide-content">
-          <div class="project-text-side">
-            <div class="slide-badge">🟢 مطبّق ويعمل في السوق الفعلي</div>
+        <div class="station-content-grid">
+          <div class="station-text-side">
+            <div class="station-road-sign">☕ محطة الشارع #1 • كافيه زردة</div>
             <h2 class="slide-title">1. نظام <span>زردة كافيه</span> (Zarda Cafe)</h2>
-            <div class="slide-subtitle">Zarda Cafe POS & Table Management System</div>
+            <div class="slide-subtitle">Hospitality, Table Billing & Shift Management System</div>
 
-            <p class="project-description">
-              نظام نقاط بيع وإدارة مطاعم وكافيهات متكامل تم تشغيله في كافيه زردة الفعلي. يُدير حركة الطاولات، طلبات الكاشير، مع نسخ احتياطي آلي لقاعدة البيانات كل ساعة.
+            <p class="station-desc-txt">
+              أول نظام تم تشغيله على أرض الواقع في كافيه زردة الفعلي. يحل مشكلة حسابات الطاولات المتداخلة، يطبع الشيكات للعميل والبار فوراً، ويقوم بنسخ احتياطي آلي لقاعدة البيانات كل ساعة لحماية الأرباح.
             </p>
 
-            <ul class="feature-list">
-              <li class="feature-item"><span>✓</span> إدارة طاولات وجلسات الكافيه</li>
-              <li class="feature-item"><span>✓</span> طباعة الشيكات الحرارية في ثوانٍ</li>
-              <li class="feature-item"><span>✓</span> نسخ احتياطي DB كل 60 دقيقة</li>
-              <li class="feature-item"><span>✓</span> تقارير شيفتات وأرباح دقيقة</li>
+            <ul class="station-specs-list">
+              <li class="spec-item"><span>✓</span> إدارة 18 طاولة وجلسة صالة</li>
+              <li class="spec-item"><span>✓</span> طباعة حرارية فورية للشيك</li>
+              <li class="spec-item"><span>✓</span> أوتوماتيك Backup كل 60 دقيقة</li>
+              <li class="spec-item"><span>✓</span> جرد فوري لمخزون البن والمشروبات</li>
             </ul>
 
-            <div style="display: flex; gap: 8px;">
+            <div style="display: flex; gap: 8px; margin-bottom: 12px;">
               <span class="tech-pill">C# .NET</span>
               <span class="tech-pill">SQLite Database</span>
               <span class="tech-pill">Thermal POS</span>
             </div>
+
+            <div class="station-metrics-grid">
+              <div class="metric-card">
+                <div class="metric-card-val">142</div>
+                <div class="metric-card-lbl">طلب في الوردية</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-card-val">4,850 ج.م</div>
+                <div class="metric-card-lbl">إيراد الوردية</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-card-val">18</div>
+                <div class="metric-card-lbl">طاولة مدارة</div>
+              </div>
+            </div>
           </div>
 
-          <div class="project-media-side">
-            <!-- Inside Screen UI -->
-            <div class="inside-system-box">
-              <div class="inside-top">
-                <div class="dots-group">
-                  <span class="dot-i r"></span>
-                  <span class="dot-i y"></span>
-                  <span class="dot-i g"></span>
-                </div>
-                <span>🖥️ شاشة النظام من الداخل • Zarda POS</span>
-              </div>
-              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 10px;">
-                <div style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; padding: 6px; border-radius: 6px; text-align: center; font-size: 11px;">
-                  <strong>طاولة 1</strong><br><span style="color:#a7f3d0;">مشغولة • 85 ج.م</span>
-                </div>
-                <div style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; padding: 6px; border-radius: 6px; text-align: center; font-size: 11px;">
-                  <strong>طاولة 2</strong><br><span style="color:#a7f3d0;">مشغولة • 140 ج.م</span>
-                </div>
-                <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); padding: 6px; border-radius: 6px; text-align: center; font-size: 11px;">
-                  <strong>طاولة 3</strong><br><span style="color:#94a3b8;">متاحة</span>
-                </div>
-              </div>
-              <div style="background: rgba(255,255,255,0.03); padding: 8px; border-radius: 6px; font-size: 12px;">
-                طلب حالي: 2 موكا كولد + 1 اسبريسو = <strong style="color:var(--gold-bright);">145.00 ج.م</strong>
-              </div>
+          <div class="station-visual-side">
+            <!-- Real Place Photo: Zarda Cafe Storefront -->
+            <div class="real-place-card">
+              <img src="zarda_cafe_store.jpg" alt="واجهة كافيه زردة الفعلية">
+              <div class="real-place-card-tag">📍 واجهة كافيه زردة الفعلية على أرض الواقع</div>
             </div>
 
-            <!-- Live Dashboard Numbers -->
-            <div class="slide-metrics-row">
-              <div class="m-card">
-                <div class="m-card-val">142</div>
-                <div class="m-card-lbl">طلب في الوردية</div>
-              </div>
-              <div class="m-card">
-                <div class="m-card-val">4,850 ج.م</div>
-                <div class="m-card-lbl">إيراد الوردية</div>
-              </div>
-              <div class="m-card">
-                <div class="m-card-val">18</div>
-                <div class="m-card-lbl">طاولة مدارة</div>
-              </div>
-            </div>
-
-            <div class="media-logos-row">
-              <div class="mini-logo-box" style="background: #fff;">
+            <!-- Logo Box -->
+            <div style="display: flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.04); border: 1px solid rgba(56,189,248,0.3); border-radius: 14px; padding: 10px 18px; width: 100%; max-width: 440px;">
+              <div class="logo-hero-box" style="width: 70px; height: 70px; padding: 6px; background: #fff; flex-shrink: 0;">
                 <img src="zarda_logo.png" alt="Zarda Logo">
               </div>
-              <div class="proof-stat-pill">
-                <span>📍</span>
-                <span>يعمل في كافيه زردة الفعلي بنجاح واستقرار تام</span>
+              <div>
+                <strong style="color: #fff; font-size: 15px; display: block;">لوجو كافيه زردة الرسمي</strong>
+                <span style="color: var(--green-live); font-size: 12.5px; font-weight: 700;">🟢 يعمل بالكافيه الفعلي يومياً</span>
               </div>
             </div>
           </div>
@@ -593,158 +652,119 @@
       </div>
     </section>
 
-    <!-- Slide 4: Project 2 - Falafel Story -->
+    <!-- Slide 4: Station 2 - Falafel Story (Logo + Story) -->
     <section class="slide" data-index="4">
       <div class="slide-box">
-        <div class="project-slide-content">
-          <div class="project-text-side">
-            <div class="slide-badge">🟢 مطبّق ويعمل في السوق الفعلي</div>
-            <h2 class="slide-title">2. نظام <span>قصة فلافل</span></h2>
-            <div class="slide-subtitle">Falafel Story Fast-Food POS & Kitchen Display</div>
+        <div class="station-content-grid">
+          <div class="station-text-side">
+            <div class="station-road-sign">🍽️ محطة الشارع #2 • مطاعم الوجبات السريعة</div>
+            <h2 class="slide-title">2. نظام <span>قصة فلافل</span> (Falafel Story)</h2>
+            <div class="slide-subtitle">Fast-Food POS, KDS Kitchen Display & Order Engine</div>
 
-            <p class="project-description">
-              تطبيق مخصص لمطاعم الوجبات السريعة والشعبية لتحمل ضغط وسرعة حركة البيع اليومية. يوفر شاشات لمس سريعة، تتبع طلبات الدليفري والصالة والتيك أواي، مع شاشة المطبخ KDS.
+            <p class="station-desc-txt">
+              نظام نقاط بيع مخصص للعمل تحت أعلى درجات ضغط الطلبات والسرعة في مطاعم المأكولات السريعة والشعبية. يحتوي على شاشة تحضير للمطبخ KDS لمنع تأخير الزبائن، ومتابعة فورية لحسابات الشيفتات.
             </p>
 
-            <ul class="feature-list">
-              <li class="feature-item"><span>✓</span> واجهة كاشير سريعة &lt; 2 ثانية</li>
-              <li class="feature-item"><span>✓</span> شاشة تحضير المطبخ KDS الفورية</li>
-              <li class="feature-item"><span>✓</span> تتبع طلبات الدليفري والصالة</li>
-              <li class="feature-item"><span>✓</span> جرد فوري للمخزون والوجبات</li>
+            <ul class="station-specs-list">
+              <li class="spec-item"><span>✓</span> واجهة كاشير لمس سريعة &lt; 2 ثانية</li>
+              <li class="spec-item"><span>✓</span> شاشة مطبخ KDS تفاعلية فورية</li>
+              <li class="spec-item"><span>✓</span> فواتير دليفري وصالة وتيك أواي</li>
+              <li class="spec-item"><span>✓</span> جرد فوري لمخزون الوجبات</li>
             </ul>
 
-            <div style="display: flex; gap: 8px;">
+            <div style="display: flex; gap: 8px; margin-bottom: 12px;">
               <span class="tech-pill">Desktop POS</span>
               <span class="tech-pill">Kitchen Display KDS</span>
-              <span class="tech-pill">Fast Orders</span>
+              <span class="tech-pill">Fast Order Engine</span>
+            </div>
+
+            <div class="station-metrics-grid">
+              <div class="metric-card">
+                <div class="metric-card-val">520+</div>
+                <div class="metric-card-lbl">ساندوتش اليوم</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-card-val">&lt; 2 ثانية</div>
+                <div class="metric-card-lbl">سرعة إدخال الطلب</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-card-val">98</div>
+                <div class="metric-card-lbl">طلب دليفري</div>
+              </div>
             </div>
           </div>
 
-          <div class="project-media-side">
-            <!-- Inside Screen UI -->
-            <div class="inside-system-box">
-              <div class="inside-top">
-                <div class="dots-group">
-                  <span class="dot-i r"></span>
-                  <span class="dot-i y"></span>
-                  <span class="dot-i g"></span>
-                </div>
-                <span>🍳 شاشة المطبخ KDS والكاشير • Falafel POS</span>
-              </div>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px;">
-                <div style="background: rgba(245,158,11,0.15); border: 1px solid var(--gold-primary); padding: 8px; border-radius: 6px; font-size: 11px;">
-                  <strong>أوردر #104 [تيك أواي]</strong><br>
-                  <span>3 فلافل محشية + بطاطس</span><br>
-                  <small style="color: var(--gold-bright);">⏱️ جاري القلي (01:15 د)</small>
-                </div>
-                <div style="background: rgba(16,185,129,0.15); border: 1px solid #10b981; padding: 8px; border-radius: 6px; font-size: 11px;">
-                  <strong>أوردر #103 [صالة]</strong><br>
-                  <span>وجبة مكس + طبق فول</span><br>
-                  <small style="color: #34d399;">✓ جاهز للتسليم</small>
-                </div>
-              </div>
+          <div class="station-visual-side">
+            <!-- Logo Box -->
+            <div class="logo-hero-box" style="width: 200px; height: 200px; background: #fff; padding: 15px;">
+              <img src="falafel_story_logo.jpeg" alt="Falafel Story Logo">
             </div>
-
-            <!-- Live Dashboard Numbers -->
-            <div class="slide-metrics-row">
-              <div class="m-card">
-                <div class="m-card-val">520+</div>
-                <div class="m-card-lbl">ساندوتش اليوم</div>
-              </div>
-              <div class="m-card">
-                <div class="m-card-val">&lt; 2 ثانية</div>
-                <div class="m-card-lbl">سرعة تسجيل الأوردر</div>
-              </div>
-              <div class="m-card">
-                <div class="m-card-val">98</div>
-                <div class="m-card-lbl">طلب دليفري</div>
-              </div>
-            </div>
-
-            <div class="media-logos-row">
-              <div class="mini-logo-box" style="background: #fff;">
-                <img src="falafel_story_logo.jpeg" alt="Falafel Story Logo">
-              </div>
-              <div class="proof-stat-pill">
-                <span>⚡</span>
-                <span>نظام نقاط بيع فعلي قيد التشغيل والخدمة اليومية</span>
-              </div>
+            <div style="text-align: center; margin-top: 8px;">
+              <strong style="color: #fff; font-size: 16px; display: block;">لوجو قصة فلافل</strong>
+              <span style="color: var(--cyan-neon); font-size: 13px;">نظام نقاط بيع وسرعة تحضير للمطاعم</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Slide 5: Project 3 - Ibrahim Henadi -->
+    <!-- Slide 5: Station 3 - Ibrahim Henadi (Place Photo + Logo + Story) -->
     <section class="slide" data-index="5">
       <div class="slide-box">
-        <div class="project-slide-content">
-          <div class="project-text-side">
-            <div class="slide-badge">🟢 نشاط تجاري فعلي وناجح</div>
-            <h2 class="slide-title">3. نظام <span>إبراهيم هنيدي</span> للأكسسوار</h2>
-            <div class="slide-subtitle">EH Accessories Retail, Inventory & Shipping System</div>
+        <div class="station-content-grid">
+          <div class="station-text-side">
+            <div class="station-road-sign">🏷️ محطة الشارع #3 • تجارة التجزئة والجملة</div>
+            <h2 class="slide-title">3. نظام <span>إبراهيم هنيدي</span> (EH System)</h2>
+            <div class="slide-subtitle">Clothing Accessories Wholesale & Shipping POS System</div>
 
-            <p class="project-description">
-              نظام إدارة المخازن ونقاط البيع لمتجر إبراهيم هنيدي للأكسسوارات بالإسكندرية (أكثر من 5,200 متابع). يدعم قارئ الباركود، فواتير الشحن لجميع المحافظات، وحسابات العملاء والموردين.
+            <p class="station-desc-txt">
+              نظام إدارة المخازن ونقاط البيع لمتجر إبراهيم هنيدي لمستلزمات الملابس والجملة بالإسكندرية (أكثر من 5,200 متابع). يربط المخزن بقارئ الباركود، ويصدر فواتير وبوالص الشحن لجميع المحافظات بدقة تامة.
             </p>
 
-            <ul class="feature-list">
-              <li class="feature-item"><span>✓</span> قارئ باركود سريع 0.1 ثانية</li>
-              <li class="feature-item"><span>✓</span> إصدار فواتير شحن لكافة المحافظات</li>
-              <li class="feature-item"><span>✓</span> شجرة حسابات عملاء وموردين</li>
-              <li class="feature-item"><span>✓</span> جرد وتنبيهات نواقص المخزن</li>
+            <ul class="station-specs-list">
+              <li class="spec-item"><span>✓</span> قارئ باركود سريع 0.1 ثانية</li>
+              <li class="spec-item"><span>✓</span> إصدار فواتير شحن لكافة المحافظات</li>
+              <li class="spec-item"><span>✓</span> شجرة حسابات عملاء وموردين</li>
+              <li class="spec-item"><span>✓</span> جرد وتنبيهات نواقص المخزن</li>
             </ul>
 
-            <div style="display: flex; gap: 8px;">
+            <div style="display: flex; gap: 8px; margin-bottom: 12px;">
               <span class="tech-pill">Barcode Scanning</span>
-              <span class="tech-pill">Inventory Engine</span>
+              <span class="tech-pill">Wholesale Inventory</span>
               <span class="tech-pill">Alexandria Retail</span>
             </div>
+
+            <div class="station-metrics-grid">
+              <div class="metric-card">
+                <div class="metric-card-val">5,200+</div>
+                <div class="metric-card-lbl">عميل ومتابع للمتجر</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-card-val">1,240</div>
+                <div class="metric-card-lbl">بوليصة شحن مسجلة</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-card-val">800+</div>
+                <div class="metric-card-lbl">صنف مسجل بالمخزن</div>
+              </div>
+            </div>
           </div>
 
-          <div class="project-media-side">
-            <!-- Inside Screen UI -->
-            <div class="inside-system-box">
-              <div class="inside-top">
-                <div class="dots-group">
-                  <span class="dot-i r"></span>
-                  <span class="dot-i y"></span>
-                  <span class="dot-i g"></span>
-                </div>
-                <span>🏷️ شاشة الباركود وبوالص الشحن • EH POS</span>
-              </div>
-              <div style="background: rgba(255,255,255,0.03); padding: 8px; border-radius: 6px; font-size: 11px; margin-bottom: 8px;">
-                كود الصنف: <code style="color:var(--gold-bright);">EH-8821</code> | أكسسوار معدني فاخر | الكمية بالمخزن: <strong>450 قطعه</strong>
-              </div>
-              <div style="display: flex; justify-content: space-between; font-size: 11px; color: #cbd5e1;">
-                <span>العميل: محمد أحمد (محافظة القاهرة)</span>
-                <span style="color: #34d399;">شركة الشحن: بوسطة • تم التوليد</span>
-              </div>
+          <div class="station-visual-side">
+            <!-- Real Place Photo: Ibrahim Henadi Facebook Store -->
+            <div class="real-place-card">
+              <img src="ibrahim_store_facebook.png" alt="متجر إبراهيم هنيدي">
+              <div class="real-place-card-tag">📍 نشاط تجاري حقيقي (5.2 ألف متابع - السيوف إسكندرية)</div>
             </div>
 
-            <!-- Live Dashboard Numbers -->
-            <div class="slide-metrics-row">
-              <div class="m-card">
-                <div class="m-card-val">5,200+</div>
-                <div class="m-card-lbl">عميل ومتابع للمتجر</div>
-              </div>
-              <div class="m-card">
-                <div class="m-card-val">1,240</div>
-                <div class="m-card-lbl">بوليصة شحن مسجلة</div>
-              </div>
-              <div class="m-card">
-                <div class="m-card-val">800+</div>
-                <div class="m-card-lbl">صنف مسجل بالمخزن</div>
-              </div>
-            </div>
-
-            <div class="media-logos-row">
-              <div class="mini-logo-box">
+            <!-- Logo Box -->
+            <div style="display: flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.04); border: 1px solid rgba(56,189,248,0.3); border-radius: 14px; padding: 10px 18px; width: 100%; max-width: 440px;">
+              <div class="logo-hero-box" style="width: 70px; height: 70px; padding: 4px; flex-shrink: 0;">
                 <img src="ibrahim_logo.jpeg" alt="EH Logo">
               </div>
-              <div class="proof-stat-pill">
-                <span>📦</span>
-                <span>إدارة شحن ومبيعات يومية لآلاف القطع بالسيوف إسكندرية</span>
+              <div>
+                <strong style="color: #fff; font-size: 15px; display: block;">لوجو إبراهيم هنيدي الرسمي</strong>
+                <span style="color: var(--green-live); font-size: 12.5px; font-weight: 700;">🟢 إدارة شحن ومبيعات يومية بالسيوف</span>
               </div>
             </div>
           </div>
@@ -752,281 +772,227 @@
       </div>
     </section>
 
-    <!-- Slide 6: Project 4 - Con's Manaa -->
+    <!-- Slide 6: Station 4 - Con's Manaa (Logo + Story) -->
     <section class="slide" data-index="6">
       <div class="slide-box">
-        <div class="project-slide-content">
-          <div class="project-text-side">
-            <div class="slide-badge">🟢 إدارة براندات الأزياء</div>
-            <h2 class="slide-title">4. نظام <span>Con's Manaa</span> للملابس</h2>
-            <div class="slide-subtitle">Manna3 Fashion Brand & Apparel Sales System</div>
+        <div class="station-content-grid">
+          <div class="station-text-side">
+            <div class="station-road-sign">👕 محطة الشارع #4 • تصنيع الأزياء والبراندات</div>
+            <h2 class="slide-title">4. مصنع <span>Con's Manaa</span> للملابس</h2>
+            <div class="slide-subtitle">Apparel Production, Wholesale Supply & Fashion POS</div>
 
-            <p class="project-description">
-              حل برمجي مخصص لبراندات الملابس وتصنيع الأزياء العصرية، يربط تصنيع الموديلات بخطوط التوزيع ومنافذ البيع المباشرة والطلبيات عبر الإنترنت، مع إدارة المقاسات والألوان.
+            <p class="station-desc-txt">
+              حل برمجي مخصص لمصانع وبراندات الملابس الجاهزة وتصنيع الأزياء الشبابية. يربط إدارة الخامات ومراحل الطباعة وحساب الهالك ومخازن المصنع بحسابات العملاء والتصفيات وفواتير المحل.
             </p>
 
-            <ul class="feature-list">
-              <li class="feature-item"><span>✓</span> إدارة الموديلات بالمقاس واللون</li>
-              <li class="feature-item"><span>✓</span> تنظيم طلبيات الأونلاين والشحن</li>
-              <li class="feature-item"><span>✓</span> متابعة تكاليف خطوط الإنتاج</li>
-              <li class="feature-item"><span>✓</span> تقارير مبيعات الفروع المباشرة</li>
+            <ul class="station-specs-list">
+              <li class="spec-item"><span>✓</span> إدارة الخامات ومراحل الطباعة</li>
+              <li class="spec-item"><span>✓</span> حساب الهالك والتصفيات آلياً</li>
+              <li class="spec-item"><span>✓</span> تنظيم طلبيات الأونلاين والشحن</li>
+              <li class="spec-item"><span>✓</span> تقارير مبيعات الفروع المباشرة</li>
             </ul>
 
-            <div style="display: flex; gap: 8px;">
-              <span class="tech-pill">Apparel Supply</span>
+            <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+              <span class="tech-pill">Apparel Factory Engine</span>
               <span class="tech-pill">Fashion Matrix</span>
-              <span class="tech-pill">POS Engine</span>
+              <span class="tech-pill">Multi-Warehouse</span>
+            </div>
+
+            <div class="station-metrics-grid">
+              <div class="metric-card">
+                <div class="metric-card-val">84</div>
+                <div class="metric-card-lbl">أوردر أونلاين اليوم</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-card-val">240 قطعه</div>
+                <div class="metric-card-lbl">خط إنتاج جاهز</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-card-val">100%</div>
+                <div class="metric-card-lbl">تتبع خامات المصنع</div>
+              </div>
             </div>
           </div>
 
-          <div class="project-media-side">
-            <!-- Inside Screen UI -->
-            <div class="inside-system-box">
-              <div class="inside-top">
-                <div class="dots-group">
-                  <span class="dot-i r"></span>
-                  <span class="dot-i y"></span>
-                  <span class="dot-i g"></span>
-                </div>
-                <span>👕 شاشة الموديلات والأونلاين • Manna3 Brand</span>
-              </div>
-              <div style="background: rgba(255,255,255,0.03); padding: 8px; border-radius: 6px; font-size: 11.5px;">
-                موديل: هودي شتوي مطبوع | أسود (S: 12, M: 24, L: 18, XL: 8)<br>
-                أوردر أونلاين #412: تم التجهيز للشحن • <strong style="color:var(--gold-bright);">380.00 ج.م</strong>
-              </div>
+          <div class="station-visual-side">
+            <!-- Logo Box -->
+            <div class="logo-hero-box" style="width: 200px; height: 200px; background: #fff; padding: 15px;">
+              <img src="cons_manaa_logo.png" alt="Con's Manaa Logo">
             </div>
-
-            <!-- Live Dashboard Numbers -->
-            <div class="slide-metrics-row">
-              <div class="m-card">
-                <div class="m-card-val">84</div>
-                <div class="m-card-lbl">أوردر أونلاين اليوم</div>
-              </div>
-              <div class="m-card">
-                <div class="m-card-val">240 قطعه</div>
-                <div class="m-card-lbl">خط إنتاج جاهز</div>
-              </div>
-              <div class="m-card">
-                <div class="m-card-val">100%</div>
-                <div class="m-card-lbl">تتبع مبيعات الفروع</div>
-              </div>
-            </div>
-
-            <div class="media-logos-row">
-              <div class="mini-logo-box" style="background: #fff;">
-                <img src="cons_manaa_logo.png" alt="Con's Manaa Logo">
-              </div>
-              <div class="proof-stat-pill">
-                <span>🚀</span>
-                <span>نظام مبيعات وتوزيع الملابس الجاهزة قيد الاستخدام</span>
-              </div>
+            <div style="text-align: center; margin-top: 8px;">
+              <strong style="color: #fff; font-size: 16px; display: block;">لوجو Con's Manaa</strong>
+              <span style="color: var(--cyan-neon); font-size: 13px;">إصدار التشغيل المعتمد 2026</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Slide 7: Project 5 - PlayStation Lounge -->
+    <!-- Slide 7: Station 5 - PlayStation Lounge (Logo + Story) -->
     <section class="slide" data-index="7">
       <div class="slide-box">
-        <div class="project-slide-content">
-          <div class="project-text-side">
-            <div class="slide-badge">🟢 أنظمة الترفيه والألعاب</div>
-            <h2 class="slide-title">5. نظام <span>صالات البلايستيشن</span></h2>
-            <div class="slide-subtitle">PlayStation Lounge & Console Management (PlayNetic)</div>
+        <div class="station-content-grid">
+          <div class="station-text-side">
+            <div class="station-road-sign">🎮 محطة الشارع #5 • صالات الألعاب والترفيه</div>
+            <h2 class="slide-title">5. نظام <span>PlayStation Lounge Pro</span></h2>
+            <div class="slide-subtitle">Multi-Console Smart Timer & Gaming POS Hub</div>
 
-            <p class="project-description">
-              نظام إدارة متطور ومخصص لصالات الـ Gaming Lounges وأجهزة الـ PlayStation. يوفر حساباً دقيقاً بالثانية للوقت المستهلك، التبديل التلقائي بين أسعار الفردي والزوجي، وإضافة طلبات الكافيه للمشاريب.
+            <p class="station-desc-txt">
+              نظام إدارة متطور ومخصص لصالات الـ Gaming Lounges وأجهزة الـ PlayStation (PS4 / PS5). يوفر حساباً دقيقاً بالثانية للوقت المستهلك، التبديل التلقائي بين أسعار الفردي والزوجي، وإضافة طلبات الكافيه للمشاريب.
             </p>
 
-            <ul class="feature-list">
-              <li class="feature-item"><span>✓</span> مؤقت زمني دقيق مقاوم للتلاعب</li>
-              <li class="feature-item"><span>✓</span> تحويل أسعار الفردي / الزوجي آلياً</li>
-              <li class="feature-item"><span>✓</span> كافيه ومشروبات مدمجة بالحساب</li>
-              <li class="feature-item"><span>✓</span> تقارير أرباح كل جهاز على مدار اليوم</li>
+            <ul class="station-specs-list">
+              <li class="spec-item"><span>✓</span> مؤقت زمني دقيق مقاوم للتلاعب</li>
+              <li class="spec-item"><span>✓</span> تحويل أسعار الفردي / الزوجي آلياً</li>
+              <li class="spec-item"><span>✓</span> كافيه ومشروبات مدمجة بالحساب</li>
+              <li class="spec-item"><span>✓</span> تقارير أرباح كل جهاز على مدار اليوم</li>
             </ul>
 
-            <div style="display: flex; gap: 8px;">
+            <div style="display: flex; gap: 8px; margin-bottom: 12px;">
               <span class="tech-pill">Smart Timing Engine</span>
               <span class="tech-pill">Multi-Console Hub</span>
               <span class="tech-pill">Gaming POS</span>
             </div>
+
+            <div class="station-metrics-grid">
+              <div class="metric-card">
+                <div class="metric-card-val">12</div>
+                <div class="metric-card-lbl">أجهزة وشاشات مُدارة</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-card-val">3,450 ج.م</div>
+                <div class="metric-card-lbl">إيراد الألعاب والكافيه</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-card-val">88%</div>
+                <div class="metric-card-lbl">نسبة إشغال الصالة</div>
+              </div>
+            </div>
           </div>
 
-          <div class="project-media-side">
-            <!-- Inside Screen UI -->
-            <div class="inside-system-box">
-              <div class="inside-top">
-                <div class="dots-group">
-                  <span class="dot-i r"></span>
-                  <span class="dot-i y"></span>
-                  <span class="dot-i g"></span>
-                </div>
-                <span>🎮 لوحة تحكم أجهزة الـ PlayStation • PlayNetic</span>
-              </div>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-                <div style="background: rgba(56,189,248,0.1); border: 1px solid var(--cyan-neon); padding: 8px; border-radius: 6px; font-size: 11px;">
-                  <strong>جهاز 1 (PS5 VIP)</strong><br>
-                  <span style="color:var(--cyan-glow); font-size:15px; font-weight:800;">01:24:15</span> [فردي]<br>
-                  وقت: 75 ج.م + كافيه: 35 ج.م
-                </div>
-                <div style="background: rgba(16,185,129,0.1); border: 1px solid #10b981; padding: 8px; border-radius: 6px; font-size: 11px;">
-                  <strong>جهاز 2 (PS5)</strong><br>
-                  <span style="color:#34d399; font-size:15px; font-weight:800;">00:45:00</span> [زوجي]<br>
-                  وقت: 60 ج.م
-                </div>
-              </div>
+          <div class="station-visual-side">
+            <!-- Logo Box -->
+            <div class="logo-hero-box" style="width: 200px; height: 200px; background: #000; padding: 10px;">
+              <img src="playstation_logo.jpg" alt="PlayStation Logo" style="object-fit: contain;">
             </div>
-
-            <!-- Live Dashboard Numbers -->
-            <div class="slide-metrics-row">
-              <div class="m-card">
-                <div class="m-card-val">12</div>
-                <div class="m-card-lbl">جهاز PS4/PS5 مُدار</div>
-              </div>
-              <div class="m-card">
-                <div class="m-card-val">3,450 ج.م</div>
-                <div class="m-card-lbl">إيراد الألعاب والكافيه</div>
-              </div>
-              <div class="m-card">
-                <div class="m-card-val">88%</div>
-                <div class="m-card-lbl">نسبة إشغال الصالة</div>
-              </div>
-            </div>
-
-            <div class="media-logos-row">
-              <div class="mini-logo-box">
-                <img src="playstation_logo.jpg" alt="PlayStation Logo">
-              </div>
-              <div class="proof-stat-pill">
-                <span>⏱️</span>
-                <span>حساب الوقت بالثانية ومنع التلاعب الفني في الصالات</span>
-              </div>
+            <div style="text-align: center; margin-top: 8px;">
+              <strong style="color: #fff; font-size: 16px; display: block;">لوجو PlayStation Lounge</strong>
+              <span style="color: var(--cyan-neon); font-size: 13px;">نظام تايمر وإدارة الصالات المتطورة</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Slide 8: Project 6 - PanCafe Pro Cyber -->
+    <!-- Slide 8: Station 6 - PanCafe Pro Cyber (Logo + Story) -->
     <section class="slide" data-index="8">
       <div class="slide-box">
-        <div class="project-slide-content">
-          <div class="project-text-side">
-            <div class="slide-badge">🟢 أنظمة الشبكات والسايبر</div>
+        <div class="station-content-grid">
+          <div class="station-text-side">
+            <div class="station-road-sign">🌐 محطة الشارع #6 • مقاهي الإنترنت والشبكات</div>
             <h2 class="slide-title">6. نظام <span>السايبر والكافيه</span> (PanCafe)</h2>
-            <div class="slide-subtitle">PanCafe Pro & Cyber Cafe Network Server</div>
+            <div class="slide-subtitle">PanCafe Pro Server & Cyber Cafe Network Manager</div>
 
-            <p class="project-description">
+            <p class="station-desc-txt">
               منظومة شبكات مركزية لإدارة مقاهي الإنترنت وصالات أجهزة الكمبيوتر، تتيح التحكم الكامل عن بعد في أجهزة العملاء (قفل/فتح/مراقبة)، مع دمج نظام مبيعات الكافيه في حساب واحد.
             </p>
 
-            <ul class="feature-list">
-              <li class="feature-item"><span>✓</span> تحكم كامل بالشبكة وأجهزة العملاء</li>
-              <li class="feature-item"><span>✓</span> قفل تلقائي عند انتهاء الرصيد</li>
-              <li class="feature-item"><span>✓</span> نقاط بيع مدمجة للمشروبات والمأكولات</li>
-              <li class="feature-item"><span>✓</span> أمان وسرية تامة لجلسات المستخدمين</li>
+            <ul class="station-specs-list">
+              <li class="spec-item"><span>✓</span> تحكم كامل بالشبكة وأجهزة العملاء</li>
+              <li class="spec-item"><span>✓</span> قفل تلقائي عند انتهاء الرصيد</li>
+              <li class="spec-item"><span>✓</span> نقاط بيع مدمجة للمشروبات والمأكولات</li>
+              <li class="spec-item"><span>✓</span> أمان وسرية تامة لجلسات المستخدمين</li>
             </ul>
 
-            <div style="display: flex; gap: 8px;">
+            <div style="display: flex; gap: 8px; margin-bottom: 12px;">
               <span class="tech-pill">Client-Server</span>
               <span class="tech-pill">Network Control</span>
               <span class="tech-pill">Cyber POS</span>
             </div>
+
+            <div class="station-metrics-grid">
+              <div class="metric-card">
+                <div class="metric-card-val">24</div>
+                <div class="metric-card-lbl">كمبيوتر متصل بالشبكة</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-card-val">100%</div>
+                <div class="metric-card-lbl">تحكم مركزي آمن</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-card-val">Zero</div>
+                <div class="metric-card-lbl">توقف في الشبكة</div>
+              </div>
+            </div>
           </div>
 
-          <div class="project-media-side">
-            <!-- Inside Screen UI -->
-            <div class="inside-system-box">
-              <div class="inside-top">
-                <div class="dots-group">
-                  <span class="dot-i r"></span>
-                  <span class="dot-i y"></span>
-                  <span class="dot-i g"></span>
-                </div>
-                <span>🌐 سيرفر شبكة أجهزة السايبر • PanCafe Server</span>
-              </div>
-              <div style="background: rgba(255,255,255,0.03); padding: 8px; border-radius: 6px; font-size: 11.5px;">
-                PC-04: جلسة نشطة [متبقي 24 دقيقة] | باندويث: 25 Mbps<br>
-                مشروبات: 1 بيبسي كانز (15 ج.م) • الحساب مدمج بالفاتورة
-              </div>
+          <div class="station-visual-side">
+            <!-- Logo Box -->
+            <div class="logo-hero-box" style="width: 200px; height: 200px; background: #000; padding: 10px;">
+              <img src="cyber_cafe_logo.jpg" alt="Cyber & Cafe Logo" style="object-fit: contain;">
             </div>
-
-            <!-- Live Dashboard Numbers -->
-            <div class="slide-metrics-row">
-              <div class="m-card">
-                <div class="m-card-val">24</div>
-                <div class="m-card-lbl">كمبيوتر متصل بالشبكة</div>
-              </div>
-              <div class="m-card">
-                <div class="m-card-val">100%</div>
-                <div class="m-card-lbl">تحكم مركزي آمن</div>
-              </div>
-              <div class="m-card">
-                <div class="m-card-val">Zero</div>
-                <div class="m-card-lbl">توقف في الشبكة</div>
-              </div>
-            </div>
-
-            <div class="media-logos-row">
-              <div class="mini-logo-box">
-                <img src="cyber_cafe_logo.jpg" alt="Cyber & Cafe Logo">
-              </div>
-              <div class="proof-stat-pill">
-                <span>🌐</span>
-                <span>سيرفر إدارة شبكات الإنترنت والمقاهي المتطورة</span>
-              </div>
+            <div style="text-align: center; margin-top: 8px;">
+              <strong style="color: #fff; font-size: 16px; display: block;">لوجو السايبر والكافيه</strong>
+              <span style="color: var(--cyan-neon); font-size: 13px;">سيرفر تحكم مركزي وشبكات إنترنت</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Slide 9: Advice for Freshmen -->
+    <!-- Slide 9: Inspiration & Freshmen Advice -->
     <section class="slide" data-index="9">
       <div class="slide-box">
-        <div class="slide-badge">💎 نصائح ذهبية لطلاب الفرقة الأولى</div>
-        <h2 class="slide-title">كيف تبدأ <span>رحلتك البرمجية</span> اليوم؟</h2>
-        <div class="slide-subtitle">خلاصة التجربة العملية لنقل المعرفة لزملائنا الجدد في الكلية</div>
+        <div class="station-road-sign">💎 خلاصة الطريق • رسالة وإلهام لكل طالب جديد</div>
+        <h2 class="slide-title">السر في <span>الرحلة</span>.. كيف تبدأ أنت أيضاً؟</h2>
+        <div class="slide-subtitle">رسالة من طالب خاض التجربة لكل طالب جديد يخطو أولى خطواته في الكلية</div>
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 15px;">
           <div style="background: rgba(56, 189, 248, 0.06); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 14px; padding: 18px;">
             <div style="font-size: 24px; margin-bottom: 6px;">1️⃣</div>
-            <h4 style="font-size: 17px; color: #fff; margin-bottom: 6px;">لا تنتظر التخرج.. ابدأ من الليلة</h4>
-            <p style="font-size: 13.5px; color: #cbd5e1; line-height: 1.6;">الفرق بين الطالب العادي والمبرمج المحترف هو الساعات التي يقضيها أمام الكود لحل مشاكل حقيقية. استغل وقتك وابدأ مشروعك الشخصي الآن.</p>
+            <h4 style="font-size: 17px; color: #fff; margin-bottom: 6px;">الكلية بتديك المفتاح.. وأنت بتفتح الباب</h4>
+            <p style="font-size: 13.5px; color: #cbd5e1; line-height: 1.6;">المناهج الجامعية أساسية ومهمة جداً، لكن قيمتها الحقيقية تظهر عندما تأخذ هذه المفاهيم وتطبقها في مشاريع برمجية حقيقية.</p>
           </div>
           <div style="background: rgba(56, 189, 248, 0.06); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 14px; padding: 18px;">
             <div style="font-size: 24px; margin-bottom: 6px;">2️⃣</div>
-            <h4 style="font-size: 17px; color: #fff; margin-bottom: 6px;">ابحث عن مشاكل في الواقع</h4>
-            <p style="font-size: 13.5px; color: #cbd5e1; line-height: 1.6;">أفضل نظام تصنعه هو الذي يحتاجه كافيه أو متجر أو صيدلية بجوارك! البرمجة ليست مجرد نظريات، بل أداة لتسهيل حياة أصحاب الأعمال.</p>
+            <h4 style="font-size: 17px; color: #fff; margin-bottom: 6px;">ابحث عن المشكلة أولاً</h4>
+            <p style="font-size: 13.5px; color: #cbd5e1; line-height: 1.6;">لا تبدأ بكتابة كود عشوائي.. انظر للكافيه أو المطعم أو المتجر في شارعك، اسأله عن معاناته اليومية وابنِ له الحل الذي يوفر وقته وماله.</p>
           </div>
           <div style="background: rgba(56, 189, 248, 0.06); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 14px; padding: 18px;">
             <div style="font-size: 24px; margin-bottom: 6px;">3️⃣</div>
-            <h4 style="font-size: 17px; color: #fff; margin-bottom: 6px;">تعلم التقنيات المطلوبة بالسوق</h4>
-            <p style="font-size: 13.5px; color: #cbd5e1; line-height: 1.6;">ركز على تقنيات قوية ومطلوبة مثل Flutter لبناء تطبيقات سطح مكتب وموبايل، و C# .NET للأنظمة المستقرة، و SQLite للبيانات.</p>
+            <h4 style="font-size: 17px; color: #fff; margin-bottom: 6px;">سطر كود كل يوم</h4>
+            <p style="font-size: 13.5px; color: #cbd5e1; line-height: 1.6;">الاستمرارية أهم من الذكاء! ساعة واحدة يومياً في بناء مشروع شخصي ستجعلك في نهاية السنة الأولى مبرمجاً يملك سابقة أعمال حقيقية في السوق.</p>
           </div>
           <div style="background: rgba(56, 189, 248, 0.06); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 14px; padding: 18px;">
             <div style="font-size: 24px; margin-bottom: 6px;">4️⃣</div>
-            <h4 style="font-size: 17px; color: #fff; margin-bottom: 6px;">لا تخف من الأخطاء</h4>
-            <p style="font-size: 13.5px; color: #cbd5e1; line-height: 1.6;">كل نظام من أنظمتنا الستة بدأ بأخطاء وتحديات، ولكن الإصرار والتعلم المستمر هو ما يوصلك للإنتاج النهائي الناجح.</p>
+            <h4 style="font-size: 17px; color: #fff; margin-bottom: 6px;">لا تخف من الفشل والأخطاء</h4>
+            <p style="font-size: 13.5px; color: #cbd5e1; line-height: 1.6;">كل نظام من أنظمتنا الستة توقف عشرات المرات أثناء التطوير.. كل خطأ حله هو خطوة للأمام تقربك من النظام المستقر والناجح.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Slide 10: Call to Action -->
+    <!-- Slide 10: Here DS CORE Was Born (The Culmination) -->
     <section class="slide" data-index="10">
       <div class="slide-box">
-        <div class="cover-content">
-          <div class="slide-badge">🌟 الرحلة مستمرة</div>
+        <div class="road-cover-box">
+          <div style="width: 110px; height: 110px; border-radius: 50%; border: 3px solid var(--cyan-neon); box-shadow: 0 0 40px rgba(56, 189, 248, 0.6); overflow: hidden; margin-bottom: 14px;">
+            <img src="ds_core_logo.jpg" alt="DS CORE Logo" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div class="station-road-sign">🌟 أفق المستقبل • من الكفاح إلى ولادة الفكرة</div>
           <h2 class="slide-title">
-            أنت القادم! اصنع <span>قصتك الخاصة</span>
+            وهنا ولدت <span>DS CORE</span> للحلول البرمجية
           </h2>
-          <div class="slide-subtitle">
-            نحن في <strong>DS CORE</strong> نؤمن بأن كل طالب يملك القدرة على تغيير واقعه وصناعة أثر حقيقي في عالم البرمجيات.
+          <div class="slide-subtitle" style="font-size: 17px; max-width: 850px; margin-bottom: 18px;">
+            مش مجرد شركة بتظهر في أول الكلام.. دي ثمرة سعي وتجربة كفاح حقيقية لسه في بدايتها!
           </div>
 
-          <div style="display: flex; gap: 20px; margin-top: 20px; flex-wrap: wrap; justify-content: center;">
+          <div style="background: rgba(56, 189, 248, 0.08); border: 1px solid var(--cyan-neon); border-radius: 16px; padding: 18px 28px; max-width: 850px; font-size: 15px; color: #e2e8f0; line-height: 1.7; margin-bottom: 24px;">
+            💎 <strong>رؤيتنا وما يميزنا:</strong><br>
+            "نحن لا نقدم برامج جاهزة معلبة.. في <strong>DS CORE</strong> نصنع للعميل نظامه المخصص من النواة (From The Core) ليلائم طبيعة عمله بالضبط. وهدفنا أن نفتح الباب لزملائنا الطلاب لنصنع معاً مستقبلاً برمجياً حقيقياً."
+          </div>
+
+          <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
             <a href="ds_core_poster.html" class="ctrl-btn gold" style="padding: 12px 28px; font-size: 15px; text-decoration: none;">
               📄 استعراض البوستر الرسمي
             </a>
@@ -1034,40 +1000,33 @@
               🌐 فتح الموقع التفاعلي للطلاب
             </a>
           </div>
-
-          <div style="margin-top: 35px; color: var(--text-sub); font-size: 13.5px;">
-            تطوير وإشراف شركة <strong>DS CORE للحلول البرمجية</strong> • حلول برمجية مخصصة من النواة لكل عميل
-          </div>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- Bottom Control Bar -->
+  <!-- Bottom Nav Bar -->
   <footer class="bottom-bar">
-    <div class="slide-indicator">
-      الشريحة <span id="currentSlideNum">1</span> من <span id="totalSlidesNum">10</span>
+    <div class="slide-counter">
+      المحطة <span id="currentSlideNum">1</span> من <span id="totalSlidesNum">10</span>
     </div>
 
-    <div class="progress-track">
-      <div class="progress-fill" id="progressBar"></div>
-    </div>
-
-    <div style="font-size: 12px; color: var(--text-sub); display: flex; gap: 10px;">
+    <div style="font-size: 12px; color: var(--text-sub); display: flex; gap: 12px;">
       <span>التنقل: ← → أو مسافة</span>
       <span>شاشة كاملة: F</span>
     </div>
 
     <div style="display: flex; gap: 10px;">
-      <button class="ctrl-btn" id="prevBtn" onclick="prevSlide()">❮ السابق</button>
-      <button class="ctrl-btn gold" id="nextBtn" onclick="nextSlide()">التالي ❯</button>
+      <button class="ctrl-btn" id="prevBtn" onclick="prevSlide()">❮ المحطة السابقة</button>
+      <button class="ctrl-btn gold" id="nextBtn" onclick="nextSlide()">المحطة التالية ❯</button>
     </div>
   </footer>
 
   <script>
     let currentSlide = 1;
     const slides = document.querySelectorAll('.slide');
+    const nodes = document.querySelectorAll('.station-node');
     const totalSlides = slides.length;
     document.getElementById('totalSlidesNum').innerText = totalSlides;
 
@@ -1080,12 +1039,26 @@
         }
       });
 
+      nodes.forEach((node, index) => {
+        node.classList.remove('active', 'passed');
+        if (index + 1 === currentSlide) {
+          node.classList.add('active');
+        } else if (index + 1 < currentSlide) {
+          node.classList.add('passed');
+        }
+      });
+
       document.getElementById('currentSlideNum').innerText = currentSlide;
-      const progressPercent = (currentSlide / totalSlides) * 100;
-      document.getElementById('progressBar').style.width = progressPercent + '%';
+      const progressPercent = ((currentSlide - 1) / (totalSlides - 1)) * 100;
+      document.getElementById('roadProgressFill').style.width = progressPercent + '%';
 
       document.getElementById('prevBtn').disabled = currentSlide === 1;
-      document.getElementById('nextBtn').innerText = currentSlide === totalSlides ? 'البداية ↺' : 'التالي ❯';
+      document.getElementById('nextBtn').innerText = currentSlide === totalSlides ? 'البداية ↺' : 'المحطة التالية ❯';
+    }
+
+    function goToSlide(n) {
+      currentSlide = n;
+      updateSlide();
     }
 
     function nextSlide() {
@@ -1106,17 +1079,12 @@
 
     function toggleFullScreen() {
       if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen().catch(err => {
-          console.log(err.message);
-        });
+        document.documentElement.requestFullscreen().catch(err => console.log(err.message));
       } else {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        }
+        if (document.exitFullscreen) document.exitFullscreen();
       }
     }
 
-    // Keyboard shortcuts
     document.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowLeft' || e.key === ' ' || e.key === 'PageDown') {
         nextSlide();
