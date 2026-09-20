@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بوستر شركة DS CORE </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-space: #060b17;
+      --card-bg: rgba(13, 23, 42, 0.82);
+      --card-border: rgba(56, 189, 248, 0.28);
+      --cyan-neon: #38bdf8;
+      --cyan-glow: #00f0ff;
+      --gold-primary: #f59e0b;
+      --gold-bright: #fbbf24;
+      --text-main: #f8fafc;
+      --text-sub: #94a3b8;
+      --badge-green: #10b981;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(circle at 50% 5%, #0e2246 0%, #060b17 65%);
+      font-family: 'Cairo', 'Outfit', sans-serif;
+      color: var(--text-main);
+      min-height: 100vh;
+      padding: 25px 15px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Cyber grid overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+      background-size: 36px 36px;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .poster-wrapper {
+      max-width: 1440px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Action bar for easy printing & navigation */
+    .top-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 12px 24px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(12px);
+    }
+
+    .btn-action {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #050b14;
+      font-weight: 800;
+      padding: 10px 22px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.35);
+    }
+
+    .btn-action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(245, 158, 11, 0.55);
+    }
+
+    .btn-secondary {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--cyan-neon);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      margin-left: 10px;
+    }
+    .btn-secondary:hover {
+      background: rgba(56, 189, 248, 0.25);
+    }
+
+    /* Poster Header */
+    .poster-hero {
+      text-align: center;
+      padding: 40px 25px 30px;
+      margin-bottom: 30px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(16, 38, 77, 0.75) 0%, rgba(9, 18, 36, 0.6) 100%);
+      border: 2px solid rgba(245, 158, 11, 0.35);
+      position: relative;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), inset 0 0 60px rgba(56, 189, 248, 0.1);
+    }
+
+    .startup-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      background: rgba(6, 11, 23, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 8px 24px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.25);
+    }
+
+    .startup-logo-img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid var(--cyan-neon);
+      object-fit: cover;
+    }
+
+    .startup-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #fff;
+    }
+    .startup-name span {
+      color: var(--cyan-neon);
+    }
+
+    .hero-title {
+      font-size: clamp(28px, 4.2vw, 52px);
+      font-weight: 900;
+      line-height: 1.25;
+      margin-bottom: 12px;
+      text-shadow: 0 0 30px rgba(56, 189, 248, 0.35);
+    }
+
+    .hero-title .highlight-gold {
+      color: var(--gold-bright);
+      background: linear-gradient(90deg, #fbbf24, #f59e0b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(16px, 2vw, 22px);
+      color: var(--cyan-neon);
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .hero-story-banner {
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid var(--gold-primary);
+      border-radius: 12px;
+      padding: 12px 20px;
+      max-width: 950px;
+      margin: 0 auto 20px;
+      font-size: 15.5px;
+      color: #fef3c7;
+      line-height: 1.7;
+    }
+
+    .hero-metrics {
+      display: flex;
+      justify-content: center;
+      gap: 35px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 20px;
+    }
+
+    .metric-box {
+      text-align: center;
+    }
+    .metric-number {
+      font-family: 'Outfit', sans-serif;
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--cyan-glow);
+    }
+    .metric-label {
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+
+    /* Grid of Real-World Systems */
+    .systems-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+      gap: 25px;
+      margin-bottom: 35px;
+    }
+
+    .system-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+    }
+
+    .system-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold-bright);
+      box-shadow: 0 16px 40px rgba(245, 158, 11, 0.2), 0 0 25px rgba(56, 189, 248, 0.2);
+    }
+
+    /* Real-World Proof Badge */
+    .proof-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: rgba(16, 185, 129, 0.18);
+      color: #34d399;
+      border: 1px solid #10b981;
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-size: 11.5px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10b981;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.6; }
+    }
+
+    .card-header-flex {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 16px;
+      margin-top: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 16px;
+    }
+
+    .system-logo-wrap {
+      width: 80px;
+      height: 80px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #0f172a;
+      border: 2px solid rgba(56, 189, 248, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+    .system-logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .system-title-group {
+      flex: 1;
+    }
+    .system-category {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold-bright);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+      display: block;
+    }
+    .system-title {
+      font-size: 21px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.3;
+    }
+    .system-title-en {
+      font-size: 13px;
+      color: var(--text-sub);
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* Real Store / Place Image Preview */
+    .place-preview {
+      width: 100%;
+      height: 140px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      position: relative;
+    }
+    .place-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .system-card:hover .place-preview img {
+      transform: scale(1.05);
+    }
+    .place-label {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .system-desc {
+      font-size: 14px;
+      color: #cbd5e1;
+      line-height: 1.65;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+
+    .system-specs {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+    .spec-tag {
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-size: 12px;
+      color: #7dd3fc;
+    }
+
+    .tech-stack-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px dashed rgba(255, 255, 255, 0.1);
+      padding-top: 12px;
+      font-size: 12px;
+      color: var(--text-sub);
+    }
+    .tech-stack-row strong {
+      color: var(--gold-bright);
+    }
+
+    /* Inspiration Banner */
+    .inspiration-box {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.2) 0%, rgba(245, 158, 11, 0.15) 100%);
+      border: 2px solid var(--gold-primary);
+      border-radius: 20px;
+      padding: 25px 30px;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .inspire-content h3 {
+      font-size: 24px;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .inspire-content h3 span {
+      color: var(--gold-bright);
+    }
+    .inspire-content p {
+      font-size: 15px;
+      color: #cbd5e1;
+      max-width: 850px;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    .poster-footer {
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 16px;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .footer-brand-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--cyan-glow);
+    }
+    .footer-copy {
+      font-size: 13.5px;
+      color: #cbd5e1;
+    }
+
+    .footer-badges {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .f-badge {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--gold-bright);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    /* Print styling */
+    @media print {
+      body {
+        background: #060b17 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        padding: 5mm;
+      }
+      .top-actions {
+        display: none !important;
+      }
+      .system-card {
+        page-break-inside: avoid;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="poster-wrapper">
+    
+    <!-- Top Action Bar -->
+    <div class="top-actions">
+      <div>
+        <strong style="color: var(--gold-bright); font-size: 16px;">🚀 شركة DS CORE - البوستر الرسمي لمعرض مشاريع الطلاب</strong>
+        <span style="color: var(--text-sub); margin-right: 15px; font-size: 13.5px;">جاهز للطباعة بدقة المتجهات (Vector) بأي مقاس (A1 / A2 / A3)</span>
+      </div>
+      <div>
+        <a href="presentation.html" class="btn-action btn-secondary">
+          🖥️ فتح البرزنتيشن الأنيميشن
+        </a>
+        <a href="index.html" class="btn-action btn-secondary">
+          🌐 فتح الموقع التفاعلي
+        </a>
+        <button class="btn-action" onclick="window.print()">
+          🖨️ طباعة / حفظ PDF
+        </button>
+      </div>
+    </div>
+
+    <!-- Hero / Header -->
+    <header class="poster-hero">
+      <div class="startup-brand">
+        <img src="logos project/ds_core_logo.jpg" alt="DS CORE Logo" class="startup-logo-img">
+        <div class="startup-name">DS <span>CORE</span> STARTUP</div>
+      </div>
+
+      <h1 class="hero-title">
+        من شغف طالب في <span class="highlight-gold">سنة أولى</span>.. إلى <span class="highlight-gold">7 أنظمة برمجية</span> تعمل في السوق الفعلي!
+      </h1>
+      <div class="hero-subtitle">
+        REAL-WORLD SOFTWARE SYSTEMS BUILT BY STUDENTS • THE JOURNEY CONTINUES
+      </div>
+
+      <div class="hero-story-banner">
+        💬 <strong>رسالة أمل وإلهام لكل طالب يبدأ رحلته الجامعية:</strong><br>
+        لا تنتظر حتى تتخرج لتبدأ في بناء مستقبلك! بالعمل الجاد والتعلم المستمر، تمكنا في نهاية الفرقة الأولى وخلال فترة الصيف من تطوير ونشر 6 أنظمة برمجية حقيقية تُدير كافيهات ومطاعم ومحلات تجارية وصالات ألعاب في السوق المصري اليوم. إذا استطعنا فعل ذلك، فأنتم أيضاً قادرون!
+      </div>
+
+      <div class="hero-metrics">
+        <div class="metric-box">
+          <div class="metric-number">7+</div>
+          <div class="metric-label">أنظمة عاملة في السوق</div>
+        </div>
+    
+        <div class="metric-box">
+          <div class="metric-number">Year 1</div>
+          <div class="metric-label">بداية الإنجاز من سنة أولى</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-number">100%</div>
+          <div class="metric-label">إنتاج وتطوير طلابي خالص</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Systems Grid -->
+    <div class="systems-grid">
+
+      <!-- System 1: Zarda Cafe -->
+      <div class="system-card">
+        <div class="proof-badge">
+          <span class="pulse-dot"></span> شغال في السوق حالياً
+        </div>
+        <div class="card-header-flex">
+          <div class="system-logo-wrap" style="background: #fff;">
+            <img src="logos project/refined_logo3.png" alt="Zarda Cafe Logo" style="object-fit: contain; padding: 4px;">
+          </div>
+          <div class="system-title-group">
+            <span class="system-category">إدارة الضيافة والمقاهي • POS</span>
+            <h2 class="system-title">نظام زردة كافيه (Zarda Cafe)</h2>
+            <div class="system-title-en">Zarda Cafe POS & Hospitality Management</div>
+          </div>
+        </div>
+
+        <div class="place-preview">
+          <img src="picuture/زرده كافيه.jpg" alt="واجهة كافيه زردة الفعلي">
+          <div class="place-label">📍 واجهة الكافيه الفعلية على أرض الواقع</div>
+        </div>
+
+        <p class="system-desc">
+          نظام متكامل وشامل لنقاط البيع يُدير كافيه "زردة" بكافة تفاصيله: إدارة طلبات الطاولات اللحظية، مراقبة المخزون، النسخ الاحتياطي التلقائي لقاعدة البيانات، وحسابات الوردية اليومية بدقة عالية.
+        </p>
+
+        <ul class="system-specs">
+          <li class="spec-tag">إدارة طاولات وجلسات</li>
+          <li class="spec-tag">طباعة شيكات سريعة</li>
+          <li class="spec-tag">نسخ احتياطي DB يومي</li>
+          <li class="spec-tag">تتبع مبيعات وأرباح</li>
+        </ul>
+
+        <div class="tech-stack-row">
+          <span>التقنية: <strong>java fx/ Windows App / SQLite</strong></span>
+          <span>الحالة: <strong>مطبّق في الكافيه</strong></span>
+        </div>
+      </div>
+
+      <!-- System 2: Falafel Story -->
+      <div class="system-card">
+        <div class="proof-badge">
+          <span class="pulse-dot"></span> شغال في السوق حالياً
+        </div>
+        <div class="card-header-flex">
+          <div class="system-logo-wrap" style="background: #fff;">
+            <img src="logos project/قصه فلافل.jpeg" alt="Falafel Story Logo" style="object-fit: contain;">
+          </div>
+          <div class="system-title-group">
+            <span class="system-category">إدارة المطاعم والوجبات السريعة</span>
+            <h2 class="system-title">نظام مطعم قصة فلافل</h2>
+            <div class="system-title-en">Falafel Story Restaurant POS System</div>
+          </div>
+        </div>
+
+        <p class="system-desc">
+          منظومة نقاط بيع سريعة للمطاعم والمأكولات الشعبية والسريعة، تمتاز بسرعة إدخال الطلبات بنقرة واحدة، شاشة تحضير للمطبخ (KDS)، إدارة توصيل الدليفري وتتبع الشيفتات المالية والأصناف الأكثر مبيعاً.
+        </p>
+
+        <ul class="system-specs">
+          <li class="spec-tag">تطبيق فائق السرعة</li>
+          <li class="spec-tag">شاشة مطبخ KDS تفاعلية</li>
+          <li class="spec-tag">فواتير دليفري وصالة وتيك أواي</li>
+          <li class="spec-tag">تقارير جرد ومخزون يومي</li>
+        </ul>
+
+        <div class="tech-stack-row">
+          <span>التقنية: <strong>Windows Desktop POS System</strong></span>
+          <span>الحالة: <strong>مطبّق في المطعم</strong></span>
+        </div>
+      </div>
+
+      <!-- System 3: Ibrahim Henadi -->
+      <div class="system-card">
+        <div class="proof-badge">
+          <span class="pulse-dot"></span> شغال في السوق حالياً
+        </div>
+        <div class="card-header-flex">
+          <div class="system-logo-wrap">
+            <img src="logos project/ibrahim logo.jpeg" alt="Ibrahim Henadi Logo">
+          </div>
+          <div class="system-title-group">
+            <span class="system-category">تجارة التجزئة والأكسسوارات</span>
+            <h2 class="system-title">نظام إبراهيم هنيدي للأكسسوار</h2>
+            <div class="system-title-en">EH Accessories Retail & Inventory POS</div>
+          </div>
+        </div>
+
+        <div class="place-preview">
+          <img src="picuture/(20+) الله المستعان _ Facebook and 2 more pages - Profile 1 - Microsoft​ Edge 9_20_2026 2_16_04 PM.png" alt="صفحة إبراهيم هنيدي على فيسبوك">
+          <div class="place-label">📍 نشاط تجاري فعلي (5.2 ألف متابع بالسيوف - إسكندرية)</div>
+        </div>
+
+        <p class="system-desc">
+          نظام تجارة ومخازن متطور لمتجر إبراهيم هنيدي للأكسسوارات بالإسكندرية. يدعم إدارة الأصناف المتعددة، أكواد الباركود، حسابات العملاء والموردين، وفواتير الشحن لجميع المحافظات.
+        </p>
+
+        <ul class="system-specs">
+          <li class="spec-tag">باركود وقارئ ليزر</li>
+          <li class="spec-tag">فواتير شحن ومبيعات</li>
+          <li class="spec-tag">حسابات أرباح شهرية</li>
+          <li class="spec-tag">إدارة أصناف ومقاسات</li>
+        </ul>
+
+        <div class="tech-stack-row">
+          <span>التقنية: <strong>Windows Application / Database</strong></span>
+          <span>الحالة: <strong>مطبّق بالمتجر</strong></span>
+        </div>
+      </div>
+
+      <!-- System 4: Con's Manaa -->
+      <div class="system-card">
+        <div class="proof-badge">
+          <span class="pulse-dot"></span> شغال في السوق حالياً
+        </div>
+        <div class="card-header-flex">
+          <div class="system-logo-wrap" style="background: #fff;">
+            <img src="logos project/logo.png" alt="Con's Manaa Logo" style="object-fit: contain; padding: 4px;">
+          </div>
+          <div class="system-title-group">
+            <span class="system-category">براندات الأزياء والملابس</span>
+            <h2 class="system-title">نظام مبيعات Con's Manaa</h2>
+            <div class="system-title-en">Manna3 Fashion & Apparel Management</div>
+          </div>
+        </div>
+
+        <p class="system-desc">
+          حل برمجي مخصص لبراندات الملابس وتصنيع الأزياء الشبابية، يقوم بتنظيم طلبيات العملاء عبر الإنترنت ومنافذ البيع، تتبع خطوط الإنتاج والموديلات والأسعار، وإدارة التوزيع والشحن.
+        </p>
+
+        <ul class="system-specs">
+          <li class="spec-tag">إدارة خطوط الموديلات</li>
+          <li class="spec-tag">حسابات طلبات أونلاين</li>
+          <li class="spec-tag">تتبع مبيعات الفروع</li>
+          <li class="spec-tag">تقارير تكلفة وتصنيع</li>
+        </ul>
+
+        <div class="tech-stack-row">
+          <span>التقنية: <strong>Windows Standalone Software</strong></span>
+          <span>الحالة: <strong>نظام مبيعات فعلي</strong></span>
+        </div>
+      </div>
+
+      <!-- System 5: PlayStation Lounge -->
+      <div class="system-card">
+        <div class="proof-badge">
+          <span class="pulse-dot"></span> شغال في السوق حالياً
+        </div>
+        <div class="card-header-flex">
+          <div class="system-logo-wrap">
+            <img src="logos project/playstation_system_logo.jpg" alt="PlayStation Lounge Logo">
+          </div>
+          <div class="system-title-group">
+            <span class="system-category">إدارة الترفيه والألعاب</span>
+            <h2 class="system-title">نظام إدارة صالات البلايستيشن</h2>
+            <div class="system-title-en">PlayStation Lounge & Console Management</div>
+          </div>
+        </div>
+
+        <p class="system-desc">
+          برنامج متقدم لتشغيل صالات البلايستيشن والـ Gaming Hubs: حساب الوقت بالثانية والدقيقة لكل جهاز تلقائياً، التفريق بين الألعاب الفردية والزوجية، دمج حساب المشاريب والمأكولات في الفاتورة النهائية.
+        </p>
+
+        <ul class="system-specs">
+          <li class="spec-tag">مؤقت زمني دقيق لكل شاشة</li>
+          <li class="spec-tag">تحويل أوتوماتيكي فردي / زوجي</li>
+          <li class="spec-tag">بوفيه وكافيه مدمج</li>
+          <li class="spec-tag">إغلاق جلسات آمن</li>
+        </ul>
+
+        <div class="tech-stack-row">
+          <span>التقنية: <strong>Windows Desktop System</strong></span>
+          <span>الحالة: <strong>شغال بصالات الألعاب</strong></span>
+        </div>
+      </div>
+
+      <!-- System 6: PanCafe Pro & Cyber System -->
+      <div class="system-card">
+        <div class="proof-badge">
+          <span class="pulse-dot"></span> شغال في السوق حالياً
+        </div>
+        <div class="card-header-flex">
+          <div class="system-logo-wrap">
+            <img src="logos project/cyber_cafe_logo.jpg" alt="Cyber & Cafe Logo">
+          </div>
+          <div class="system-title-group">
+            <span class="system-category">أنظمة الشبكات ومقاهي الإنترنت</span>
+            <h2 class="system-title">نظام إدارة السايبر والكافيه</h2>
+            <div class="system-title-en">Cyber Lounge & Cafe Server System</div>
+          </div>
+        </div>
+
+        <p class="system-desc">
+          منظومة سيرفر وتحكم بالشبكات لإدارة مقاهي الإنترنت وصالات ألعاب الكمبيوتر، تدير جلسات العملاء عن بُعد، قفل وفتح الأجهزة، ومحاسبة المستخدمين على الوقت المستهلك مع طلبات الكافيه.
+        </p>
+
+        <ul class="system-specs">
+          <li class="spec-tag">سيرفر شبكات وتحكم عن بُعد</li>
+          <li class="spec-tag">حساب استهلاك الإنترنت والوقت</li>
+          <li class="spec-tag">نظام كاشير مأكولات ومشروبات</li>
+          <li class="spec-tag">حماية وتأمين الجلسات</li>
+        </ul>
+
+        <div class="tech-stack-row">
+          <span>التقنية: <strong>Server Architecture / Client-Server</strong></span>
+          <span>الحالة: <strong>شغال في مقاهي الإنترنت</strong></span>
+        </div>
+      </div>
+
+      <!-- System 7: DNU Scope -->
+      <div class="system-card" style="border-color: rgba(245, 158, 11, 0.5);">
+        <div class="proof-badge" style="background: rgba(245, 158, 11, 0.2); color: var(--gold-bright); border-color: var(--gold-primary);">
+          ⭐ ابتكار طلابي أكاديمي
+        </div>
+        <div class="card-header-flex">
+          <div class="system-logo-wrap" style="background: #fff;">
+            <img src="logos project/dnu_scope_logo.jpg" alt="DNU Scope Logo" style="object-fit: contain; padding: 4px;">
+          </div>
+          <div class="system-title-group">
+            <span class="system-category">الأنظمة الأكاديمية والجامعية</span>
+            <h2 class="system-title">منصة DNU Scope الأكاديمية</h2>
+            <div class="system-title-en">DNU Scope University Portal & Doctor Support</div>
+          </div>
+        </div>
+
+        <p class="system-desc">
+          منصة جامعية متطورة لربط الطلاب وأعضاء هيئة التدريس: تسهيل الاستشارات الأكاديمية، متابعة الجداول والمقررات، إرسال التنبيهات، وحل مشكلات الطلاب بذكاء وسرعة.
+        </p>
+
+        <ul class="system-specs">
+          <li class="spec-tag">بوابة تفاعلية للطلاب</li>
+          <li class="spec-tag">لوحة تحكم للدكاترة</li>
+          <li class="spec-tag">إدارة الجداول والساعات المكتبية</li>
+          <li class="spec-tag">دعم واستفسارات أكاديمية</li>
+        </ul>
+
+        <div class="tech-stack-row">
+          <span>التقنية: <strong>Flutter Windows Desktop App</strong></span>
+          <span>الحالة: <strong>جاهز للتطبيق بالجامعة</strong></span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Inspiration Banner -->
+    <div class="inspiration-box">
+      <div class="inspire-content">
+        <h3>هل أنت مستعد لبدء <span>رحلتك البرمجية</span>؟</h3>
+        <p>
+          كل هذه الأنظمة بدأت بفكرة، ثم سطر كود واحد، ثم إصرار على تحويل الكود إلى برمجيات حقيقية تخدم أصحاب الأعمال. نحن في <strong>DS CORE</strong> نفتح الباب أمام جميع زملائنا الطلاب لتبادل الخبرات، العمل المشترك، وصناعة الفارق.
+        </p>
+      </div>
+      <div>
+        <a href="index.html" class="btn-action">
+          🚀 تواصل معنا وابدأ الآن
+        </a>
+      </div>
+    </div>
+
+    <!-- Poster Footer -->
+    <footer class="poster-footer">
+      <div class="footer-left">
+        <div class="footer-brand-title">DS CORE</div>
+        <div class="footer-copy">
+          <strong>شركة DS CORE للحلول البرمجية</strong> • تأسست بشغف وإرادة طلابية خالصة<br>
+          معرض مشاريع الكلية للتدريب الصيفي | كلية الحاسبات والمعلومات والذكاء الاصطناعي
+        </div>
+      </div>
+      <div class="footer-badges">
+        <span class="f-badge">💡 7 مشاريع حقيقية في السوق</span>
+        <span class="f-badge">🔥 من سنة أولى كلية</span>
+        <span class="f-badge">🚀 في أمل.. والرحلة مستمرة</span>
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+</html>
